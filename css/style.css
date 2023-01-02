@@ -1,0 +1,106 @@
+:root {
+	/*cores*/
+	--preto: #000000;
+	--branco: #FFFFFF;
+	--cinza-escuro: #393939;
+
+	/*fontes*/
+	--fonte-principal: 'Inter', sans-serif;;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62,5%;
+}
+
+body {
+	font-size: 1.0rem;
+	font-weight: 400;
+	font-family: var(--fonte-principal);
+}
+
+.cabecalho, .rodape {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.0rem;
+	background-color: var(--preto);
+	padding: 1.6rem;
+}
+
+.cabecalho__logo, .rodape__logo {
+	align-self: center;
+	width: 80%;
+}
+
+.cabecalho__navegacao {
+	display: flex;
+	justify-content: space-around;
+}
+
+.cabecalho__navegacao-link {
+	text-decoration: none;
+	color: var(--branco);
+}
+
+.conteudo-principal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.0rem;
+	width: 100%;
+	padding: 0rem 1.0rem 1.6rem 1.0rem;
+}
+
+.conteudo-principal__titulo, 
+.conteudo-principal__descricao {
+	text-align: center;
+}
+
+.secao-esportes {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+}
+
+.esporte {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+}
+
+.esporte-imagem, .categoria-imagem {
+	width: 100%;
+	border-radius: 0.8rem;
+	flex-basis: 10.0rem;
+}
+
+.secao-categorias {
+	background-color: var(--cinza-escuro);
+	color: var(--branco);
+	display: flex;
+	flex-direction: column;
+	gap: 1.0rem;
+	text-align: center;
+	padding: 1.6rem;
+}
+
+.categoria-titulo {
+	font-weight: 400;
+}
+
+.rodape__link-topo {
+	align-self: center;
+	text-decoration: none;
+	color: var(--branco);
+	font-size: 1.6rem;
+}
+
+@media (width >=480px) {
+
+}
