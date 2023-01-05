@@ -3,6 +3,8 @@
 	--preto: #000000;
 	--branco: #FFFFFF;
 	--cinza-escuro: #393939;
+	--sombra: #878484;
+	--vermelho: #CA0035;
 
 	/*fontes*/
 	--fonte-principal: 'Inter', sans-serif;;
@@ -18,12 +20,14 @@ body {
 	font-size: 1rem;
 	font-weight: 400;
 	font-family: var(--fonte-principal);
+	min-height: 100vh;
 }
 
 .cabecalho, .rodape {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	gap: 0.625rem;
 	background-color: var(--preto);
 	padding: 1rem;
@@ -32,16 +36,24 @@ body {
 
 .cabecalho__logo, .rodape__logo {
 	align-self: center;
-	width: 80%;
+	width: 12.5rem;
 }
 
 .cabecalho__navegacao {
 	display: flex;
 	justify-content: space-around;
+	width: 17.5rem;
 }
 
 .cabecalho__navegacao-link {
 	text-decoration: none;
+	color: var(--branco);
+	border: 0.1875rem solid transparent;
+	transition: 0.5s;
+}
+
+.cabecalho__navegacao-link:hover {
+	border-bottom: 0.1875rem solid var(--vermelho);
 	color: var(--branco);
 }
 
@@ -52,6 +64,7 @@ body {
 	gap: 0.625rem;
 	width: 100%;
 	padding: 0rem 1rem 1rem 1rem;
+	margin-top: 1rem;
 }
 
 .conteudo-principal__titulo {
@@ -72,13 +85,27 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 0.1875rem;
-	padding: 1rem;
+	padding: 0.5rem;
+	border: 0.0625rem solid transparent;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.esporte:hover {
+	border: 0.0625rem solid var(--preto);
+	border-radius: 0.5rem;
 }
 
 .esporte-imagem, .categoria-imagem {
 	width: 100%;
+	height: 10.5rem;
 	border-radius: 0.5rem;
 	flex: 1 0 auto;
+}
+
+.esporte-imagem {
+	box-shadow: 0.5rem 0.5rem 0.3rem var(--sombra);
+	margin-bottom: 1rem;
 }
 
 .secao-categorias {
@@ -86,6 +113,7 @@ body {
 	color: var(--branco);
 	display: flex;
 	flex-direction: column;
+	border-radius: 0.5rem;
 	gap: 0.625rem;
 	text-align: center;
 	padding: 1rem;
@@ -95,16 +123,39 @@ body {
 	font-weight: 400;
 }
 
+.categoria {
+	border: 0.0625rem solid transparent;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.categoria:hover {
+	border: 0.0625rem solid var(--branco);
+	border-radius: 0.5rem;
+}
+
 .rodape__link-topo {
 	align-self: center;
 	text-decoration: none;
 	color: var(--branco);
+	border: 0.1875rem solid transparent;
 	font-size: 1rem;
+	transition: 0.5s;
+}
+
+.rodape__link-topo:hover {
+	border-bottom: 0.1875rem solid var(--vermelho);
+}
+
+@media (width >= 375px) {
+	.esporte-imagem, .categoria-imagem {
+		height: auto;
+	}
 }
 
 @media (width >= 640px) {
 	body {
-		font-size: 1.125rem;
+		font-size: 1.2rem;
 	}
 
 	.cabecalho, .rodape {
@@ -114,10 +165,6 @@ body {
 		padding: 1rem 2rem 1rem 2rem;
 	}
 
-	.cabecalho__logo, .rodape__logo {
-		width: 40%;
-	}
-
 	.cabecalho__navegacao {
 		justify-content: space-around;
 		gap: 1rem;
@@ -125,8 +172,18 @@ body {
 
 	.secao-esportes {
 		display: grid;
-		grid-template-areas: 
-		"esporte-boxe esporte-crossfit";
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+		"esporte-boxe esporte-crossfit"
+		"esporte-natacao esporte-parkour"
+		"esporte-basquete esporte-corrida"
+		"esporte-surf esporte-trilha"
+		"esporte-tenis esporte-tenis";
+	}
+
+	.esporte {
+		padding: 1rem;
 	}
 
 	.esporte-boxe {
@@ -136,17 +193,55 @@ body {
 	.esporte-crossfit {
 		grid-area: esporte-crossfit;
 	}
+
+	.esporte-natacao {
+		grid-area: esporte-natacao;
+	}
+
+	.esporte-parkour {
+		grid-area: esporte-parkour;
+	}
+
+	.esporte-basquete {
+		grid-area: esporte-basquete;
+	}
+
+	.esporte-corrida {
+		grid-area: esporte-corrida;
+	}
+
+	.esporte-surf {
+		grid-area: esporte-surf;
+	}
+
+	.esporte-trilha {
+		grid-area: esporte-trilha;
+	}
+
+	.esporte-tenis {
+		grid-area: esporte-tenis;
+	}
+
+	.secao-categorias {
+		min-width: 18.75rem;
+		max-width: 40rem;
+		align-self: center;
+	}
 }
 
 @media (width >= 1024px) {
 	.conteudo-principal {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: 3fr 1fr;
+		grid-template-rows: auto;
 		grid-template-areas: 
-		"conteudo-principal__titulo conteudo-principal__titulo conteudo-principal__titulo conteudo-principal__titulo"
-		"secao-esportes secao-esportes secao-esportes secao-categorias";
+		"conteudo-principal__titulo conteudo-principal__titulo"
+		"secao-esportes secao-categorias"
+		"secao-esportes secao-categorias"
+		"secao-esportes secao-categorias"
+		"secao-esportes secao-categorias"
+		"secao-esportes secao-categorias";
 		gap: 1rem;
-		margin-top: 1rem;
 	}
 
 	.conteudo-principal__titulo {
@@ -159,11 +254,8 @@ body {
 
 	.secao-categorias {
 		grid-area: secao-categorias;
+		grid-row: 2/5;
 		margin-top: 1rem;
-	}
-
-	.cabecalho__logo, .rodape__logo {
-		width: 20%;
 	}
 
 	.rodape__link-topo {
@@ -173,27 +265,16 @@ body {
 
 @media (width >= 1280px) {
 	.secao-esportes {
-		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-areas: 
-		"esporte-boxe esporte-crossfit esporte-natacao";
-	}
-
-	.esporte-natacao {
-		grid-area: esporte-natacao;
-	}
-
-	.esporte:hover {
-		border: 0.0625rem solid var(--preto);
-		border-radius: 0.5rem;
+		"esporte-boxe esporte-crossfit esporte-natacao"
+		"esporte-parkour esporte-basquete esporte-corrida"
+		"esporte-surf esporte-trilha esporte-tenis";
 	}
 }
 
 @media (width >= 1440px) {
 	body {
 		font-size: 1.5rem;
-	}
-
-	.cabecalho__logo, .rodape__logo {
-		width: 15%;
 	}
 }
